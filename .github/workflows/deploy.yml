@@ -4,7 +4,7 @@ on:
 jobs:
   deploy:
     name: deploy to remote vps
-    runs-on: ubuntu-latest
+    runs-on: host
     permissions:
       contents: write
     steps:
