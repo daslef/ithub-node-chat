@@ -18,5 +18,7 @@ jobs:
           script: |
             cd /root/nodeChat
             git pull
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
             npm ci
             pm2 restart node-chat
