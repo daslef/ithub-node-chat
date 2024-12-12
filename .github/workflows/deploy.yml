@@ -1,0 +1,25 @@
+name: "Deploy to remote VPS by SSH"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: deploy to remote vps
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      id-token: write # to enable use of OIDC for npm provenance
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: root
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /root/nodeChat
+            git pull
+            npm ci
+            pm2 restart node-chat
