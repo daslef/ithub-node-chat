@@ -1,4 +1,4 @@
-name: "Deploy to remote VPS by SSH"
+name: "Deploy to VPS"
 on:
   workflow_dispatch:
 jobs:
